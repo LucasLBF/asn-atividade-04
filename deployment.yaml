@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: cicd-dp005
+    app.kubernetes.io/instance: cicd-instance-dp005
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/managed-by: kubectl
+  name: cicd-deployment-dp005
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cicd-dp005
+  template:
+    metadata:
+      labels:
+        app: cicd-dp005
+    spec:
+      containers:
+        - image: 325583868777.dkr.ecr.ca-central-1.amazonaws.com/cicd-demo:latest
+          imagePullPolicy: Always
+          name: cicd-container-dp005
+          ports:
+            - containerPort: 80

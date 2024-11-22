@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: cicd-dp005
+    app.kubernetes.io/instance: cicd-instance-dp005
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/managed-by: kubectl
+  name: cicd-dp005
+spec:
+  selector:
+    app: cicd-dp005
+  ports:
+   -  protocol: TCP
+      port: 8080
+      targetPort: 80
